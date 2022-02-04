@@ -8,6 +8,34 @@ Created on Fri Feb  4 08:50 2022
 import libs.Colors as C
 
 
+# return list from args
+def init_list(*args):
+    list_args = []
+    for arg in args:
+        list_args.append(arg)
+    return list_args
+
+
+# print list with enumerate
+def print_list(my_list):
+    for i, value in enumerate(my_list):
+        print("{} : {}".format(i, value))
+
+
+def add_in_list(my_list, value):
+    my_list.append(value)
+    return my_list
+
+
+def remove_from_list(my_list, value):
+    try:
+        my_list.remove(value)
+    except ValueError:
+        C.Colors.print_error("La valeur n'existe pas dans la liste")
+
+    return my_list
+
+
 # verify if the entry is a int
 # if two numbers are given, verify if the entry is between the two numbers
 def get_int(*args):

@@ -17,8 +17,8 @@ class Colors:
 
     @staticmethod
     def print_warning(text):
-        print(Colors.WARNING, text, Colors.ENDC)
+        print(Colors.WARNING, "[WARNING] ", text, Colors.ENDC)
 
     @staticmethod
     def print_error(text):
-        print(Colors.FAIL, text, Colors.ENDC)
+        print(Colors.FAIL, "[ERROR] ", text, Colors.ENDC)

@@ -16,6 +16,7 @@ class TestS1(unittest.TestCase):
     def test_test(self):
         self.assertEqual(True, True)
 
+    # Test the method get_int and sub method
     def test_get_int_should_return_true(self):
         with patch('builtins.input', return_value='1'):
             self.assertEqual(True, s1.get_int())
@@ -43,6 +44,9 @@ class TestS1(unittest.TestCase):
     def test_get_int_with_interval_should_return_value_error_for_arg1_and_arg2(self):
         with patch('builtins.input', return_value='1'):
             self.assertRaises(ValueError, s1.get_int, 'a', 'a')
+
+    # test the method about lists
+
 
 if __name__ == '__main__':
     unittest.main()

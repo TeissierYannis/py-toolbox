@@ -7,35 +7,68 @@ Created on Fri Feb  4 08:50 2022
 """
 import toolbox.s1 as s1
 import libs.Colors as C
-
-
-def s1_p1():
-    try:
-        s1.get_int()
-        s1.get_int(3, 20)
-    except ValueError as e:
-        print(C.Colors.FAIL, e, C.Colors.ENDC)
-
-
-def s1_p2():
-    # create a list of name
-    my_list = s1.init_list("John", "Paul", "George", "Ringo")
-    # print the list
-    s1.print_list(my_list)
-
-    # add a new name
-    s1.add_in_list(my_list, "Pete")
-    s1.print_list(my_list)
-
-    # remove a name
-    s1.remove_from_list(my_list, "George")
-    s1.remove_from_list(my_list, "Ad")
-
-    s1.print_list(my_list)
+import toolbox.s2 as s2
 
 
 def __main__():
-    s1_p2()
+    try:
+        result = s2.eq1(4, -2)
+        C.Colors.print_valid(result)
+    except Exception as e:
+        C.Colors.print_error(e)
+    try:
+        result = s2.ineq1(4, 2)
+        C.Colors.print_valid(result)
+    except Exception as e:
+        C.Colors.print_error(e)
+    try:
+        result = s2.ineq1bis(0, 1, '<')
+        C.Colors.print_valid(result)
+    except Exception as e:
+        C.Colors.print_error(e)
+    try:
+        result = s2.ineq1bis(4, -2, '<')
+        C.Colors.print_valid(result)
+    except Exception as e:
+        C.Colors.print_error(e)
+
+    try:
+        result = s2.eq2(1, -4, 4)
+        C.Colors.print_valid(result)
+    except Exception as e:
+        C.Colors.print_error(e)
+
+    try:
+        result = s2.eq2(2, -3, 1)
+        C.Colors.print_valid(result)
+    except Exception as e:
+        C.Colors.print_error(e)
+
+    try:
+        result = s2.ineq2(3, 2, 1)
+        C.Colors.print_valid(result)
+    except Exception as e:
+        C.Colors.print_error(e)
+
+    try:
+        result = s2.ineq2(2, 2, -12)
+        C.Colors.print_valid(result)
+    except Exception as e:
+        C.Colors.print_error(e)
+
+    try:
+        result = s2.ineq2bis(1, 2, 3, '>')
+        C.Colors.print_valid(result)
+    except Exception as e:
+        C.Colors.print_error(e)
+
+    try:
+        result = s2.ineq2bis(2, 2, -12, '>')
+        C.Colors.print_valid(result)
+    except Exception as e:
+        C.Colors.print_error(e)
 
 
 __main__()
+
+

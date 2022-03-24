@@ -6,6 +6,14 @@ Created on Fri Feb  4 08:50 2022
 @author: Yannis Teissier
 
 """
+from typing import Tuple
+
+"""
+    Ensemble vide = []
+    {1} = [1]
+    {1,2} = [1,2]
+    ]-inf;O[ = ["]","-inf","0","["]
+"""
 
 
 # Verify if a list of integers is valid
@@ -26,62 +34,48 @@ def is_sign(sign: str) -> bool:
 
 
 # Solve equation ax+b = 0
-def eq1(a: int, b: int) -> float:
+def eq1(a: int, b: int) -> Tuple:
     is_int([a, b])
     """
     Solve equation ax+b = 0
     """
     if a == 0:
         if b == 0:
-            raise ValueError("The equation is indeterminate")
+            return ']', '-inf', ';', '+inf' '['
         else:
-            raise ValueError("No solution")
+            return ()
     else:
         x = -b / a
-        return x
+        return tuple([x])
 
 
 # Solve inequality ax+b > 0
-def ineq1(a: int, b: int) -> float:
+def ineq1(a: int, b: int) -> Tuple:
     is_int([a, b])
-
     """
     Solve inequality ax+b > 0
     """
+
+    result = eq1(a, b)
+
     if a == 0:
-        if b == 0:
-            raise ValueError("The equation is indeterminate")
+        if b > 0:
+            return ']', '-inf', ';', '+inf', '['
         else:
-            raise ValueError("No solution")
+            return ()
     else:
-        x = -b / a
-        return x
+        if a > 0:
+            return ']', -b / a, ';', '+inf', '['
+        else:
+            return ']', '-inf', ';', -b / a, '['
 
-
-def ineq1bis(a: int, b: int, sign: str) -> float:
-    is_int([a, b])
+def ineq1bis(a: int, b: int, sign: str) -> tuple:
     is_sign(sign)
 
-    """
-    Solve inequality ax+b > 0 or ax+b < 0
-    """
-    if a == 0:
-        if b == 0:
-            raise ValueError("The equation is indeterminate")
-        else:
-            raise ValueError("No solution")
+    if sign == '>':
+        return ineq1(a, b)
     else:
-        x = -b / a
-        if sign == "<":
-            if x < 0:
-                raise ValueError("No solution")
-            else:
-                return x
-        else:
-            if x > 0:
-                raise ValueError("No solution")
-            else:
-                return x
+        return ineq1(-a, -b)
 
 
 # Solve second degree equation ax²+bx+c = 0
